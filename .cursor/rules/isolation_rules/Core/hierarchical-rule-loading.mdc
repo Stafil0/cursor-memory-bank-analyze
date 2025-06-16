@@ -22,6 +22,7 @@ graph TD
     Core --> Transition["Mode<br>Transitions"]
     
     Mode --> VAN["VAN Mode<br>Rules"]
+    Mode --> ANALYZE["ANALYZE Mode<br>Rules"]
     Mode --> PLAN["PLAN Mode<br>Rules"]
     Mode --> CREATIVE["CREATIVE Mode<br>Rules"]
     Mode --> IMPLEMENT["IMPLEMENT Mode<br>Rules"]
@@ -160,6 +161,13 @@ graph TD
         VanMap --> Van3["van-platform-detection.mdc"]
     end
     
+    subgraph "ANALYZE Mode"
+        AnalyzeMap["analyze-mode-map.mdc"] --> Analyze1["analyze-template-bugs.mdc"]
+        AnalyzeMap --> Analyze2["analyze-template-requirements.mdc"]
+        AnalyzeMap --> Analyze3["analyze-template-research.mdc"]
+        AnalyzeMap --> Analyze4["analyze-template-brainstorming.mdc"]
+    end
+    
     subgraph "PLAN Mode"
         PlanMap["plan-mode-map.mdc"] --> Plan1["task-tracking-basic.mdc"]
         PlanMap --> Plan2["planning-comprehensive.mdc"]
@@ -188,6 +196,13 @@ graph TD
 - platform-awareness.mdc (Core)
 - file-verification.mdc (Core)
 - van-mode-map.mdc (Mode)
+```
+
+### ANALYZE Mode Essential Rules
+```markdown
+- main.mdc (Core)
+- analyze-mode-map.mdc (Mode)
+- analyze-template-[type].mdc (Conditional)
 ```
 
 ### PLAN Mode Essential Rules

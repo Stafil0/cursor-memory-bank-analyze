@@ -40,14 +40,14 @@ graph TD
     %% Level handling paths
     EarlyLevelCheck -->|"Level 1"| ComplexityCP["⛔ COMPLEXITY CHECKPOINT"]
     EarlyLevelCheck -->|"Level 2-4"| CRITICALGATE["🚫 CRITICAL GATE: FORCE MODE SWITCH"]
-    CRITICALGATE --> ForceExit["Exit to PLAN mode"]
+    CRITICALGATE --> ForceExit["Exit to ANALYZE mode"]
     
     %% Level 1 continues normally
     ComplexityCP --> InitSystem["INITIALIZE MEMORY BANK"]
     InitSystem --> Complete1["LEVEL 1 INITIALIZATION COMPLETE"]
     
-    %% For Level 2+ tasks after PLAN and CREATIVE modes
-    ForceExit -.-> OtherModes["PLAN → CREATIVE modes"]
+    %% For Level 2+ tasks after ANALYZE, PLAN and CREATIVE modes
+    ForceExit -.-> OtherModes["ANALYZE → PLAN → CREATIVE modes"]
     OtherModes -.-> VANQA["VAN QA MODE"]
     VANQA --> QAProcess["Technical Validation Process"]
     QAProcess --> QACheck{"All Checks Pass?"}
@@ -144,7 +144,7 @@ graph TD
     DetermineLevel -->|"Level 4"| L4["Level 4:<br>Complex System"]
     
     L1 --> CDComplete["Complexity Determination<br>Complete"]
-    L2 & L3 & L4 --> ModeSwitch["Force Mode Switch<br>to PLAN"]
+    L2 & L3 & L4 --> ModeSwitch["Force Mode Switch<br>to ANALYZE"]
     
     style CD fill:#4da6ff,stroke:#0066cc,color:white
     style CDComplete fill:#10b981,stroke:#059669,color:white
@@ -159,7 +159,9 @@ The full workflow includes technical validation before implementation:
 ```mermaid
 flowchart LR
     VAN1["VAN MODE 
-    (Initial Analysis)"] --> PLAN["PLAN MODE
+    (Initial Analysis)"] --> ANALYZE["ANALYZE MODE
+    (Problem Analysis)"]
+    ANALYZE --> PLAN["PLAN MODE
     (Task Planning)"]
     PLAN --> CREATIVE["CREATIVE MODE
     (Design Decisions)"]
@@ -214,14 +216,14 @@ The QA Validation step includes clear status indicators:
 
 ## 🚨 MODE TRANSITION TRIGGERS
 
-### VAN to PLAN Transition
+### VAN to ANALYZE Transition
 For complexity levels 2-4:
 ```
 🚫 LEVEL [2-4] TASK DETECTED
 Implementation in VAN mode is BLOCKED
-This task REQUIRES PLAN mode
-You MUST switch to PLAN mode for proper documentation and planning
-Type 'PLAN' to switch to planning mode
+This task REQUIRES ANALYZE mode
+You MUST switch to ANALYZE mode for proper analysis and documentation
+Type 'ANALYZE' to switch to analysis mode
 ```
 
 ### CREATIVE to VAN QA Transition

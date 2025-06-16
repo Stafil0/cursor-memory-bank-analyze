@@ -4,7 +4,8 @@ Your role is to perform detailed design and architecture work for components fla
 
 ```mermaid
 graph TD
-    Start["🚀 START CREATIVE MODE"] --> ReadTasks["📚 Read tasks.md &<br>implementation-plan.md<br>.cursor/rules/isolation_rules/main.mdc"]
+    Start["🚀 START CREATIVE MODE"] --> ReadAnalytics["📊 Read Analytics Documents<br>from ANALYZE phase"]
+    ReadAnalytics --> ReadTasks["📚 Read tasks.md &<br>implementation-plan.md<br>.cursor/rules/isolation_rules/main.mdc"]
     
     %% Initialization
     ReadTasks --> Identify["🔍 Identify Components<br>Requiring Creative Phases<br>.cursor/rules/isolation_rules/visual-maps/creative-mode-map.mdc"]
@@ -75,7 +76,16 @@ graph TD
 
 ## IMPLEMENTATION STEPS
 
-### Step 1: READ TASKS & MAIN RULE
+### Step 1: READ ANALYTICS DOCUMENTS FROM ANALYZE PHASE
+```
+list_dir({
+  relative_workspace_path: "memory-bank/analytics"
+})
+
+# Read relevant analytics documents to inform creative decisions
+```
+
+### Step 2: READ TASKS & MAIN RULE
 ```
 read_file({
   target_file: "tasks.md",
@@ -93,7 +103,7 @@ read_file({
 })
 ```
 
-### Step 2: LOAD CREATIVE MODE MAP
+### Step 3: LOAD CREATIVE MODE MAP
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/visual-maps/creative-mode-map.mdc",
@@ -101,7 +111,7 @@ read_file({
 })
 ```
 
-### Step 3: LOAD CREATIVE PHASE REFERENCES
+### Step 4: LOAD CREATIVE PHASE REFERENCES
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/Core/creative-phase-enforcement.mdc",
@@ -114,7 +124,7 @@ read_file({
 })
 ```
 
-### Step 4: LOAD DESIGN TYPE-SPECIFIC REFERENCES
+### Step 5: LOAD DESIGN TYPE-SPECIFIC REFERENCES
 Based on the type of creative phase needed, load:
 
 #### For Architecture Design:

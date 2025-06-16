@@ -132,7 +132,7 @@ graph TD
     DetermineLevel -->|"Level 4"| L4["Level 4:<br>Complex System"]
     
     L1 --> CDComplete["Complexity Determination<br>Complete"]
-    L2 & L3 & L4 --> ModeSwitch["Force Mode Switch<br>to PLAN"]
+    L2 & L3 & L4 --> ModeSwitch["Force Mode Switch<br>to ANALYZE"]
     
     style CD fill:#4da6ff,stroke:#0066cc,color:white
     style CDComplete fill:#10b981,stroke:#059669,color:white
@@ -147,7 +147,9 @@ The full workflow includes technical validation before implementation:
 ```mermaid
 flowchart LR
     VAN1["VAN MODE 
-    (Initial Analysis)"] --> PLAN["PLAN MODE
+    (Initial Analysis)"] --> ANALYZE["ANALYZE MODE
+    (Problem Analysis)"]
+    ANALYZE --> PLAN["PLAN MODE
     (Task Planning)"]
     PLAN --> CREATIVE["CREATIVE MODE
     (Design Decisions)"]
@@ -202,14 +204,14 @@ The QA Validation step includes clear status indicators:
 
 ## 🚨 MODE TRANSITION TRIGGERS
 
-### VAN to PLAN Transition
+### VAN to ANALYZE Transition
 For complexity levels 2-4:
 ```
 🚫 LEVEL [2-4] TASK DETECTED
 Implementation in VAN mode is BLOCKED
-This task REQUIRES PLAN mode
-You MUST switch to PLAN mode for proper documentation and planning
-Type 'PLAN' to switch to planning mode
+This task REQUIRES ANALYZE mode
+You MUST switch to ANALYZE mode for proper analysis and documentation
+Type 'ANALYZE' to switch to analysis mode
 ```
 
 ### CREATIVE to VAN QA Transition
@@ -899,4 +901,10 @@ Here are common fixes for issues encountered during QA validation:
 
 → If all YES: Ready for BUILD mode
 → If any NO: Fix identified issues before proceeding
+
+
+
+
+
+
 ``` 

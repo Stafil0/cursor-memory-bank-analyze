@@ -16,15 +16,17 @@ Level 3 tasks represent a significant development effort, building a complete fe
 graph LR
     Init["1. INITIALIZATION<br>(VAN Mode Output)"] -->
     DocSetup["2. DOCUMENTATION SETUP"] -->
-    Plan["3. FEATURE PLANNING (PLAN Mode)"] -->
-    Creative["4. CREATIVE PHASES (CREATIVE Mode)"] -->
-    Impl["5. IMPLEMENTATION (IMPLEMENT Mode)"] -->
-    Reflect["6. REFLECTION (REFLECT Mode)"] -->
-    Archive["7. ARCHIVING (ARCHIVE Mode)"]
+    Analyze["3. ANALYZE (ANALYZE Mode)"] -->
+    Plan["4. FEATURE PLANNING (PLAN Mode)"] -->
+    Creative["5. CREATIVE PHASES (CREATIVE Mode)"] -->
+    Impl["6. IMPLEMENTATION (IMPLEMENT Mode)"] -->
+    Reflect["7. REFLECTION (REFLECT Mode)"] -->
+    Archive["8. ARCHIVING (ARCHIVE Mode)"]
 
     %% Document connections for each phase (conceptual links to mode guidance)
     Init -.-> InitDocs["Core Rules & L3 Confirmation"]
     DocSetup -.-> DocSetupDocs["Memory Bank Setup for L3"]
+    Analyze -.-> AnalyzeDocs["Comprehensive Problem Analysis"]
     Plan -.-> PlanDocs["Comprehensive Feature Plan"]
     Creative -.-> CreativeDocs["Targeted Design Documents"]
     Impl -.-> ImplDocs["Feature Implementation & Testing"]
@@ -33,6 +35,7 @@ graph LR
 
     style Init fill:#a1c4fd,stroke:#669df6
     style DocSetup fill:#b3e5fc,stroke:#81d4fa
+    style Analyze fill:#e1f5fe,stroke:#b3e5fc
     style Plan fill:#c8e6c9,stroke:#a5d6a7
     style Creative fill:#ffd8b2,stroke:#ffcc80
     style Impl fill:#ffcdd2,stroke:#ef9a9a
@@ -121,7 +124,50 @@ graph TD
     → If any NO: Complete documentation setup steps.
     ```
 
-### Phase 3: FEATURE PLANNING (PLAN Mode)
+### Phase 3: ANALYZE (PROBLEM ANALYSIS)
+
+Guided by `custom_modes/analyze_instructions.md` and using appropriate analysis templates.
+
+```mermaid
+graph TD
+    StartAnalyze["Begin L3 Problem<br>Analysis"] --> LoadAnalyze["Load ANALYZE<br>Mode Rules & Templates"]
+    LoadAnalyze --> DetectType["Detect Document Type<br>(Requirements/Research/Brainstorming)"]
+    DetectType --> LoadTemplate["Load Appropriate<br>Analysis Template(s)"]
+    LoadTemplate --> ConductAnalysis["Conduct Comprehensive<br>Feature Analysis"]
+    ConductAnalysis --> DocumentAnalysis["Document Analysis<br>in Analytics Folder"]
+    DocumentAnalysis --> AnalyzeComplete["L3 Analysis<br>Complete"]
+
+    style StartAnalyze fill:#e1f5fe,stroke:#b3e5fc
+    style AnalyzeComplete fill:#b3e5fc,stroke:#81d4fa
+```
+
+**Steps:**
+1. Load ANALYZE mode rules and comprehensive templates
+2. Detect document type based on feature characteristics (requirements, research, brainstorming)
+3. Load appropriate analysis template(s) - may use multiple templates for complex features
+4. Conduct comprehensive feature analysis using 4-phase ANALYZE workflow:
+   - DISCOVER: Gather information about the feature domain
+   - ANALYZE: Break down requirements and constraints
+   - SYNTHESIZE: Combine insights into coherent understanding
+   - DOCUMENT: Create structured analysis documents
+5. Document analysis results in `memory-bank/analytics/` folder with appropriate naming
+6. Prepare comprehensive analysis for feature planning consumption
+
+**Milestone Checkpoint:**
+```
+✓ L3 ANALYZE CHECKPOINT
+- ANALYZE mode rules and templates loaded? [YES/NO]
+- Document type(s) correctly identified for feature? [YES/NO]
+- Appropriate template(s) loaded and used? [YES/NO]
+- Comprehensive feature analysis conducted? [YES/NO]
+- Analysis documented in analytics folder with proper naming? [YES/NO]
+- Analysis provides sufficient foundation for feature planning? [YES/NO]
+
+→ If all YES: Proceed to Feature Planning.
+→ If any NO: Complete analysis steps.
+```
+
+### Phase 4: FEATURE PLANNING (PLAN Mode)
 
 Guided by `visual-maps/plan-mode-map.mdc` and using `Level3/planning-comprehensive.mdc` and `Level3/task-tracking-intermediate.mdc`.
 
@@ -140,16 +186,18 @@ graph TD
 ```
 
   * **Steps:**
-    1.  Define detailed functional and non-functional requirements for the feature.
-    2.  Perform component analysis: identify new components to build and existing ones that will be modified. Map their interactions.
-    3.  Develop an implementation strategy: outline the main steps or stages for building the feature.
-    4.  Identify dependencies (technical, data, other features) and potential risks, along with mitigation ideas.
-    5.  **Critical for L3:** Explicitly identify and flag parts of the feature that require CREATIVE mode (e.g., specific UI/UX challenges, new architectural patterns for the feature, complex algorithms).
-    6.  Document the complete plan (requirements, components, strategy, dependencies, risks, creative flags) in `memory-bank/tasks.md` under the Level 3 feature task entry.
+    1.  Review comprehensive analysis documents from ANALYZE phase
+    2.  Define detailed functional and non-functional requirements based on analysis
+    3.  Perform component analysis: identify new components to build and existing ones that will be modified. Map their interactions.
+    4.  Develop an implementation strategy: outline the main steps or stages for building the feature.
+    5.  Identify dependencies (technical, data, other features) and potential risks, along with mitigation ideas.
+    6.  **Critical for L3:** Explicitly identify and flag parts of the feature that require CREATIVE mode (e.g., specific UI/UX challenges, new architectural patterns for the feature, complex algorithms).
+    7.  Document the complete plan (requirements, components, strategy, dependencies, risks, creative flags) in `memory-bank/tasks.md` under the Level 3 feature task entry.
   * **Milestone Checkpoint:**
     ```
     ✓ L3 FEATURE PLANNING CHECKPOINT
-    - Detailed requirements documented in tasks.md? [YES/NO]
+    - Analysis documents from ANALYZE phase reviewed? [YES/NO]
+    - Detailed requirements documented based on analysis? [YES/NO]
     - Component analysis (new/affected, interactions) complete? [YES/NO]
     - Implementation strategy outlined? [YES/NO]
     - Dependencies and risks documented? [YES/NO]
@@ -160,7 +208,7 @@ graph TD
     → If any NO: Complete planning steps.
     ```
 
-### Phase 4: CREATIVE PHASES (CREATIVE Mode)
+### Phase 5: CREATIVE PHASES (CREATIVE Mode)
 
 Triggered if aspects were flagged in the PLAN phase. Guided by `visual-maps/creative-mode-map.mdc` and `Phases/CreativePhase/*.mdc` rules.
 
@@ -196,7 +244,7 @@ graph TD
     → If any NO: Complete creative phase work.
     ```
 
-### Phase 5: IMPLEMENTATION (IMPLEMENT Mode)
+### Phase 6: IMPLEMENTATION (IMPLEMENT Mode)
 
 Guided by `visual-maps/implement-mode-map.mdc` and `Level3/implementation-L3.mdc`.
 
@@ -259,14 +307,16 @@ graph TD
     2.  Analyze what went well, what was challenging, and any deviations from the original plan or design.
     3.  Document key lessons learned regarding technology, architecture, process, or team collaboration relevant to this feature.
     4.  Specifically assess how effective the creative phase decisions were during actual implementation.
-    5.  Create the `memory-bank/reflection-[feature_id].md` document.
-    6.  Update `memory-bank/tasks.md` to mark the reflection stage for the feature as complete.
+    5.  Extract actionable rules from insights and create .mdc files in appropriate directories.
+    6.  Create the `memory-bank/reflection-[feature_id].md` document.
+    7.  Update `memory-bank/tasks.md` to mark the reflection stage for the feature as complete.
   * **Milestone Checkpoint:**
     ```
     ✓ L3 REFLECTION CHECKPOINT
     - Feature development lifecycle thoroughly reviewed? [YES/NO]
     - Successes, challenges, and lessons learned documented in `reflection-[feature_id].md`? [YES/NO]
     - Effectiveness of creative/design decisions assessed? [YES/NO]
+    - Actionable rules extracted to .mdc files? [YES/NO]
     - `tasks.md` updated to reflect reflection completion? [YES/NO]
 
     → If all YES: Proceed to Archiving.
@@ -323,4 +373,9 @@ Remember:
 This ensures that intermediate features are developed with an appropriate level of rigor, bridging the gap between simple enhancements and full-scale system development.
 
 ```
+
+
+
+
+
 ```

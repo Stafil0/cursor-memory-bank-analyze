@@ -16,6 +16,7 @@ graph TD
     %% Phase detection decision path
     DetectPhase --> PhaseDetermination{"Current Phase?"}
     PhaseDetermination -->|"VAN"| VANChecks["VAN Phase Validation"]
+    PhaseDetermination -->|"ANALYZE"| ANALYZEChecks["ANALYZE Phase Validation"]
     PhaseDetermination -->|"PLAN"| PLANChecks["PLAN Phase Validation"]
     PhaseDetermination -->|"CREATIVE"| CREATIVEChecks["CREATIVE Phase Validation"] 
     PhaseDetermination -->|"IMPLEMENT"| IMPLEMENTChecks["IMPLEMENT Phase Validation"]
@@ -27,7 +28,7 @@ graph TD
     TaskTrackingCheck --> ReferenceCheck["3️⃣ REFERENCE VALIDATION<br>Verify cross-references between docs"]
     
     %% Phase-specific validations feed into comprehensive report
-    VANChecks & PLANChecks & CREATIVEChecks & IMPLEMENTChecks --> PhaseSpecificResults["Phase-Specific Results"]
+    VANChecks & ANALYZEChecks & PLANChecks & CREATIVEChecks & IMPLEMENTChecks --> PhaseSpecificResults["Phase-Specific Results"]
     ReferenceCheck & PhaseSpecificResults --> ValidationResults{"✅ All Checks<br>Passed?"}
     
     %% Results Processing
@@ -71,11 +72,12 @@ graph TD
     
     CheckTasks --> PhaseResult{"Determine<br>Current Phase"}
     PhaseResult -->|"VAN"| VAN["VAN Phase<br>Initialization"]
+    PhaseResult -->|"ANALYZE"| ANALYZE["ANALYZE Phase<br>Analysis & Research"]
     PhaseResult -->|"PLAN"| PLAN["PLAN Phase<br>Task Planning"]
     PhaseResult -->|"CREATIVE"| CREATIVE["CREATIVE Phase<br>Design Decisions"]
     PhaseResult -->|"IMPLEMENT"| IMPLEMENT["IMPLEMENT Phase<br>Implementation"]
     
-    VAN & PLAN & CREATIVE & IMPLEMENT --> LoadChecks["Load Phase-Specific<br>Validation Checks"]
+    VAN & ANALYZE & PLAN & CREATIVE & IMPLEMENT --> LoadChecks["Load Phase-Specific<br>Validation Checks"]
     
     style PD fill:#4da6ff,stroke:#0066cc,color:white
     style PhaseResult fill:#f6546a,stroke:#c30052,color:white
@@ -170,6 +172,27 @@ graph TD
     style VANConsistency fill:#f6546a,stroke:#c30052,color:white
     style PassVAN fill:#10b981,stroke:#059669,color:white
     style FailVAN fill:#ff5555,stroke:#dd3333,color:white
+```
+
+### ANALYZE Phase Validation
+
+```mermaid
+graph TD
+    ANALYZE["ANALYZE Phase<br>Validation"] --> AnalyticsCheck["Check Analytics<br>Documents Exist"]
+    AnalyticsCheck --> TemplateCheck["Verify Analysis<br>Template Usage"]
+    TemplateCheck --> TypeCheck["Validate Document<br>Type Detection"]
+    TypeCheck --> QualityCheck["Assess Analysis<br>Findings Quality"]
+    QualityCheck --> StructureCheck["Verify Analytics<br>Folder Structure"]
+    StructureCheck --> MBUpdateCheck["Check Memory Bank<br>Updates During Analysis"]
+    
+    MBUpdateCheck --> ANALYZEConsistency{"ANALYZE Phase<br>Complete?"}
+    ANALYZEConsistency -->|"Yes"| PassANALYZE["✅ ANALYZE Phase<br>Validation Passed"]
+    ANALYZEConsistency -->|"No"| FailANALYZE["❌ ANALYZE Phase<br>Issues Found"]
+    
+    style ANALYZE fill:#4da6ff,stroke:#0066cc,color:white
+    style ANALYZEConsistency fill:#f6546a,stroke:#c30052,color:white
+    style PassANALYZE fill:#10b981,stroke:#059669,color:white
+    style FailANALYZE fill:#ff5555,stroke:#dd3333,color:white
 ```
 
 ### PLAN Phase Validation
@@ -274,6 +297,38 @@ for file in $(grep -l "see\|refer\|reference" --include="*.md" .); do
     test -f $ref || echo "❌ Broken reference: $ref in $file"
   done
 done
+```
+
+### ANALYZE Phase Validation Commands:
+
+```bash
+# Check analytics folder structure
+test -d memory-bank/analytics && echo "✅ Analytics folder exists" || echo "❌ Analytics folder missing"
+ls -la memory-bank/analytics/
+
+# Verify analytics document types
+find memory-bank/analytics/ -name "*.md" | grep -E "(requirements|research|bugs|brainstorming)" | wc -l
+
+# Check analytics document naming conventions
+find memory-bank/analytics/ -name "*.md" | grep -E "analytics-(requirements|research|bugs|brainstorming)-" | wc -l
+
+# Validate analysis template usage
+for file in $(find memory-bank/analytics/ -name "*.md"); do
+  if grep -q "## ANALYSIS TYPE" "$file"; then
+    echo "✅ Template used: $file"
+  else
+    echo "⚠️ Template missing: $file"
+  fi
+done
+
+# Check analysis findings quality
+grep -r "## FINDINGS\|## ANALYSIS RESULTS\|## CONCLUSIONS" memory-bank/analytics/
+
+# Verify Memory Bank updates during analysis
+grep -r "activeContext\|tasks.md\|progress.md" memory-bank/analytics/
+
+# Check cross-references to analytics documents
+grep -r "analytics/" --include="*.md" memory-bank/ | grep -v "memory-bank/analytics/"
 ```
 
 ## 📋 1️⃣ DEPENDENCY VERIFICATION PROCESS (Original)

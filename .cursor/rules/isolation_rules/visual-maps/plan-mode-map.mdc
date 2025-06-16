@@ -13,9 +13,11 @@ alwaysApply: false
 ```mermaid
 graph TD
     Start["START PLANNING"] --> ReadTasks["Read tasks.md<br>Core/task-tracking.md"]
+    ReadTasks --> ReadAnalytics["Read Analytics Documents<br>memory-bank/analytics/"]
+    ReadAnalytics --> ExtractInsights["Extract Key Insights<br>from Analysis Results"]
     
     %% Complexity Level Determination
-    ReadTasks --> CheckLevel{"Determine<br>Complexity Level"}
+    ExtractInsights --> CheckLevel{"Determine<br>Complexity Level"}
     CheckLevel -->|"Level 2"| Level2["LEVEL 2 PLANNING<br>Level2/enhancement-planning.md"]
     CheckLevel -->|"Level 3"| Level3["LEVEL 3 PLANNING<br>Level3/feature-planning.md"]
     CheckLevel -->|"Level 4"| Level4["LEVEL 4 PLANNING<br>Level4/system-planning.md"]
@@ -147,7 +149,33 @@ graph TD
     CheckTasks -->|"Yes"| CheckActive{"activeContext.md<br>exists?"}
     
     CheckActive -->|"No"| ErrorActive["ERROR:<br>Return to VAN Mode"]
-    CheckActive -->|"Yes"| ReadyPlan["Ready for<br>Planning"]
+    CheckActive -->|"Yes"| CheckAnalytics{"Analytics documents<br>exist?"}
+    
+    CheckAnalytics -->|"No"| ErrorAnalytics["ERROR:<br>Return to ANALYZE Mode"]
+    CheckAnalytics -->|"Yes"| ReadyPlan["Ready for<br>Planning"]
+```
+
+## 🔍 KEY INSIGHTS EXTRACTION PROCESS
+
+Extract and reference analysis findings for planning decisions:
+
+```mermaid
+graph TD
+    ExtractStart["Extract Key Insights"] --> ReadAnalytics["Read Analytics<br>Documents"]
+    ReadAnalytics --> IdentifyFindings["Identify Key<br>Findings"]
+    IdentifyFindings --> CategorizeInsights["Categorize Insights<br>by Planning Impact"]
+    CategorizeInsights --> CreateSummary["Create Insights<br>Summary"]
+    
+    CreateSummary --> TechInsights["Technical<br>Insights"]
+    CreateSummary --> UserInsights["User/Business<br>Insights"]
+    CreateSummary --> RiskInsights["Risk/Challenge<br>Insights"]
+    CreateSummary --> SolutionInsights["Solution<br>Recommendations"]
+    
+    TechInsights & UserInsights & RiskInsights & SolutionInsights --> PlanningInput["Input to<br>Planning Process"]
+    
+    style ExtractStart fill:#4da6ff,stroke:#0066cc,color:white
+    style CreateSummary fill:#6c5ce7,stroke:#5f3dc4,color:white
+    style PlanningInput fill:#26de81,stroke:#20bf6b,color:white
 ```
 
 ## 📝 TASKS.MD UPDATE FORMAT
@@ -177,8 +205,26 @@ Type: [Enhancement/Feature/Complex System]
 - [ ] Hello world verification completed
 - [ ] Test build passes successfully
 
+## Analysis Insights
+### Technical Insights
+- [Key technical findings from analysis]
+- [Technical constraints/requirements identified]
+
+### User/Business Insights
+- [User needs/pain points from analysis]
+- [Business requirements/goals identified]
+
+### Risk/Challenge Insights
+- [Identified risks from analysis]
+- [Mitigation strategies from analysis]
+
+### Solution Recommendations
+- [Recommended approaches from analysis]
+- [Priority features/components identified]
+
 ## Status
 - [x] Initialization complete
+- [x] Analysis complete
 - [x] Planning complete
 - [ ] Technology validation complete
 - [ ] [Implementation steps]
@@ -271,5 +317,11 @@ When planning is complete, notify user with:
 ✅ tasks.md updated with plan
 ✅ Challenges and mitigations documented
 [✅ Creative phases identified (for Level 3-4)]
+
+
+
+
+
+
 
 → NEXT RECOMMENDED MODE: [CREATIVE/IMPLEMENT] MODE 

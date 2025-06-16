@@ -150,6 +150,58 @@ For minimal mode, use this format:
 ✓ TIME: Est [X] vs. Actual [Y] ([Z%] variance)
 ```
 
+## 📝 RULE EXTRACTION FOR LEVEL 2
+
+After completing reflection, extract actionable rules from insights:
+
+### Rule Categories & Directories
+- **Technical patterns** → `.cursor/rules/technical/`
+- **Process improvements** → `.cursor/rules/process/`
+- **Game-specific patterns** → `.cursor/rules/game-development/`
+- **UI/UX patterns** → `.cursor/rules/ui/`
+- **Troubleshooting** → `.cursor/rules/troubleshooting/`
+
+**If no suitable category exists**: Create new directory under `.cursor/rules/[category-name]/`
+
+### Rule Extraction Template
+```
+---
+description: [Brief description of the pattern/rule]
+globs: [relevant file patterns if applicable]
+alwaysApply: false
+---
+# [Rule Title]
+
+## Context
+[When this rule applies]
+
+## Guidelines
+- [Specific guideline 1]
+- [Specific guideline 2]
+
+## Example
+```[language]
+// Good approach
+[code example]
+```
+
+## Avoid
+- [What not to do]
+```
+
+### Level 2 Rule Extraction Checklist
+```
+✓ RULE EXTRACTION VERIFICATION (Level 2)
+- Technical insights converted to rules? [YES/NO]
+- Process improvements converted to rules? [YES/NO]
+- Rules placed in appropriate directories? [YES/NO]
+- New categories created if needed? [YES/NO/NA]
+- Rules are concise and actionable? [YES/NO]
+
+→ If all YES: Rule extraction complete
+→ If any NO: Complete missing rule creation
+```
+
 ## 🔄 INTEGRATION WITH MEMORY BANK
 
 Reflection integrates with Memory Bank:
@@ -159,9 +211,10 @@ graph TD
     Reflection["Enhancement<br>Reflection"] --> Archive["Add to<br>Archive"]
     Reflection --> ProgressUpdate["Update<br>progress.md"]
     Reflection --> ActionItems["Document<br>Action Items"]
+    Reflection --> RuleExtraction["Extract<br>Rules (.mdc)"]
     
     ActionItems --> Tasks["Add to<br>tasks.md"]
-    Archive & ProgressUpdate & Tasks --> CrossLinks["Create<br>Cross-Links"]
+    Archive & ProgressUpdate & Tasks & RuleExtraction --> CrossLinks["Create<br>Cross-Links"]
 ```
 
 ## 🚨 CONTINUOUS IMPROVEMENT PRINCIPLE
@@ -174,5 +227,8 @@ Remember:
 │ actionable improvement for future work.             │
 └─────────────────────────────────────────────────────┘
 ```
+
+
+
 
 This ensures that reflection directly contributes to ongoing improvement of both the product and the process. 

@@ -48,7 +48,8 @@ graph TD
     
     %% Completion & Transition
     L1Update & L2Update & L34Update --> CreateReflection["Create<br>reflection.md"]
-    CreateReflection --> UpdateSystem["Update System<br>Documentation"]
+    CreateReflection --> ExtractRules["Extract Actionable<br>Rules (.mdc)"]
+    ExtractRules --> UpdateSystem["Update System<br>Documentation"]
     UpdateSystem --> Transition["NEXT MODE:<br>ARCHIVE MODE"]
 ```
 
@@ -206,10 +207,66 @@ During reflection, update tasks.md with:
 - Technical Improvements identified? [YES/NO]
 - Next Steps documented? [YES/NO]
 - reflection.md created? [YES/NO]
+- Actionable rules extracted to .mdc files? [YES/NO]
 - tasks.md updated with reflection status? [YES/NO]
 
 → If all YES: Reflection complete - ready for ARCHIVE mode
 → If any NO: Complete missing reflection elements
+```
+
+## 📝 RULE EXTRACTION PROCESS
+
+After creating reflection.md, extract actionable rules:
+
+### Rule Categories & Directories
+- **Technical patterns** → `.cursor/rules/technical/`
+- **Process improvements** → `.cursor/rules/process/`
+- **Game-specific patterns** → `.cursor/rules/game-development/`
+- **UI/UX patterns** → `.cursor/rules/ui/`
+- **Troubleshooting** → `.cursor/rules/troubleshooting/`
+
+**If no suitable category exists**: Create new directory under `.cursor/rules/[category-name]/` with descriptive name (e.g., `security/`, `performance/`, `testing/`, `deployment/`)
+
+### Rule Extraction Template
+For each actionable insight in reflection:
+
+```
+---
+description: [Brief description of the pattern/rule]
+globs: [relevant file patterns if applicable]
+alwaysApply: false
+---
+# [Rule Title]
+
+## Context
+[When this rule applies]
+
+## Guidelines
+- [Specific guideline 1]
+- [Specific guideline 2]
+
+## Example
+```[language]
+// Good approach
+[code example]
+```
+
+## Avoid
+- [What not to do]
+```
+
+### Rule Creation Checklist
+```
+✓ RULE EXTRACTION VERIFICATION
+- Technical insights converted to rules? [YES/NO]
+- Process improvements converted to rules? [YES/NO]
+- Rules placed in appropriate directories? [YES/NO]
+- New categories created if needed? [YES/NO/NA]
+- Rule format follows .mdc standard? [YES/NO]
+- Rules are concise and actionable? [YES/NO]
+
+→ If all YES: Rule extraction complete
+→ If any NO: Complete missing rule creation
 ```
 
 ## 🔄 MODE TRANSITION NOTIFICATION
@@ -221,9 +278,16 @@ When reflection is complete, notify user with:
 
 ✅ Implementation thoroughly reviewed
 ✅ Reflection document created
+✅ Actionable rules extracted and created
 ✅ Lessons learned documented
 ✅ Process improvements identified
 ✅ tasks.md updated with reflection status
 
 → NEXT RECOMMENDED MODE: ARCHIVE MODE
+
+
+
+
+
+
 ``` 

@@ -72,3 +72,60 @@ graph TD
   * **Integration Complexity:** Challenges or successes in integrating the feature with the existing application.
   * **Design-to-Implementation Fidelity:** How closely did the final product match the designs?
   * **Cross-Component Impact:** Understanding the ripple effects of the feature.
+
+## 📝 RULE EXTRACTION FOR LEVEL 3
+
+After completing reflection, extract actionable rules from feature development insights:
+
+### Rule Categories & Directories
+- **Technical patterns** → `.cursor/rules/technical/`
+- **Process improvements** → `.cursor/rules/process/`
+- **Game-specific patterns** → `.cursor/rules/game-development/`
+- **UI/UX patterns** → `.cursor/rules/ui/`
+- **Troubleshooting** → `.cursor/rules/troubleshooting/`
+- **Architecture patterns** → `.cursor/rules/architecture/`
+
+**If no suitable category exists**: Create new directory under `.cursor/rules/[category-name]/`
+
+### Rule Extraction Template
+```
+---
+description: [Brief description of the pattern/rule]
+globs: [relevant file patterns if applicable]
+alwaysApply: false
+---
+# [Rule Title]
+
+## Context
+[When this rule applies]
+
+## Guidelines
+- [Specific guideline 1]
+- [Specific guideline 2]
+
+## Example
+```[language]
+// Good approach
+[code example]
+```
+
+## Avoid
+- [What not to do]
+```
+
+### Level 3 Rule Extraction Checklist
+```
+✓ RULE EXTRACTION VERIFICATION (Level 3)
+- Feature-level patterns converted to rules? [YES/NO]
+- Creative phase insights converted to rules? [YES/NO]
+- Integration patterns documented as rules? [YES/NO]
+- Rules placed in appropriate directories? [YES/NO]
+- New categories created if needed? [YES/NO/NA]
+- Rules are comprehensive yet concise? [YES/NO]
+
+→ If all YES: Rule extraction complete
+→ If any NO: Complete missing rule creation
+```
+
+
+

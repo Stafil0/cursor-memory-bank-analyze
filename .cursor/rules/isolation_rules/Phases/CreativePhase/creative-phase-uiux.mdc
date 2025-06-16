@@ -1,6 +1,6 @@
 ---
 description: UI/UX Design Guidelines and Process for the Creative Phase
-globs: creative-phase-uiux.mdc
+globs: creative-phase-uiux.mdc, creative-phase-uiux.md
 alwaysApply: false
 ---
 Okay, I've updated the style guide location to `memory-bank/style-guide.md` and will provide the entire content for the new `creative-phase-uiux.md` file within a single markdown code block for easy copying. I've also reviewed the Mermaid diagrams to ensure they are correctly formatted.

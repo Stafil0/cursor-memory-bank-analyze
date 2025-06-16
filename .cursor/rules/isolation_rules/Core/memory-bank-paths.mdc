@@ -16,8 +16,15 @@ alwaysApply: true
 * **System Patterns File:** `memory-bank/systemPatterns.md`
 * **Tech Context File:** `memory-bank/techContext.md`
 * **Style Guide File:** `memory-bank/style-guide.md`
+* **Analytics Directory:** `memory-bank/analytics/`
+  - **Requirements Analysis:** `memory-bank/analytics/requirements/analytics-requirements-[description].md`
+  - **Research Documents:** `memory-bank/analytics/research/analytics-research-[description].md`
+  - **Bug Analysis:** `memory-bank/analytics/bugs/analytics-bugs-[description].md`
+  - **Brainstorming Sessions:** `memory-bank/analytics/brainstorming/analytics-brainstorming-[description].md`
 * **Creative Phase Docs:** `memory-bank/creative/creative-[feature_name].md`
 * **Reflection Docs:** `memory-bank/reflection/reflection-[task_id].md`
 * **Archive Directory:** `memory-bank/archive/archive-[task_id].md`
 
 **Verification Mandate:** Before any `create_file` or `edit_file` operation on these core files, verify the path starts with `memory-bank/`. If attempting to create a new core file (e.g., `tasks.md` at the start of a project), ensure it is created at `memory-bank/tasks.md`.
+
+

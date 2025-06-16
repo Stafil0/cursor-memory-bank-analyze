@@ -569,6 +569,65 @@ flowchart TD
     class Observe,Question,Connect,Contrast,Hypothesize,Test,Refine,Apply step
 ```
 
+## 📝 RULE EXTRACTION FOR LEVEL 4
+
+After completing comprehensive reflection, extract actionable rules from system-level insights:
+
+### Rule Categories & Directories
+- **Technical patterns** → `.cursor/rules/technical/`
+- **Process improvements** → `.cursor/rules/process/`
+- **Game-specific patterns** → `.cursor/rules/game-development/`
+- **UI/UX patterns** → `.cursor/rules/ui/`
+- **Troubleshooting** → `.cursor/rules/troubleshooting/`
+- **Architecture patterns** → `.cursor/rules/architecture/`
+- **System design** → `.cursor/rules/system-design/`
+- **Performance** → `.cursor/rules/performance/`
+- **Security** → `.cursor/rules/security/`
+
+**If no suitable category exists**: Create new directory under `.cursor/rules/[category-name]/`
+
+### Rule Extraction Template
+```
+---
+description: [Brief description of the pattern/rule]
+globs: [relevant file patterns if applicable]
+alwaysApply: false
+---
+# [Rule Title]
+
+## Context
+[When this rule applies]
+
+## Guidelines
+- [Specific guideline 1]
+- [Specific guideline 2]
+
+## Example
+```[language]
+// Good approach
+[code example]
+```
+
+## Avoid
+- [What not to do]
+```
+
+### Level 4 Rule Extraction Checklist
+```
+✓ RULE EXTRACTION VERIFICATION (Level 4)
+- System-level patterns converted to rules? [YES/NO]
+- Architectural insights converted to rules? [YES/NO]
+- Strategic patterns documented as rules? [YES/NO]
+- Performance patterns documented as rules? [YES/NO]
+- Security patterns documented as rules? [YES/NO]
+- Rules placed in appropriate directories? [YES/NO]
+- New categories created if needed? [YES/NO/NA]
+- Rules are comprehensive and strategic? [YES/NO]
+
+→ If all YES: Rule extraction complete
+→ If any NO: Complete missing rule creation
+```
+
 ## 📋 MEMORY BANK INTEGRATION
 
 ```mermaid
@@ -582,11 +641,12 @@ flowchart TD
     Reflection --> SP[systemPatterns.md]
     Reflection --> TC[techContext.md]
     Reflection --> P[progress.md]
+    Reflection --> RuleExtraction[Rule Extraction<br>(.mdc files)]
     
-    PB & PC & AC & SP & TC & P --> MBI[Memory Bank<br>Integration]
+    PB & PC & AC & SP & TC & P & RuleExtraction --> MBI[Memory Bank<br>Integration]
     MBI --> Next[Enhanced Future<br>Projects]
     
-    class PB,PC,AC,SP,TC,P memfile
+    class PB,PC,AC,SP,TC,P,RuleExtraction memfile
     class Reflection,MBI,Next process
 ```
 
@@ -657,6 +717,13 @@ Knowledge Transfer
 - Technical knowledge transfer planned? [YES/NO]
 - Process knowledge transfer planned? [YES/NO]
 - Documentation updates identified? [YES/NO]
+
+Rule Extraction
+- System-level patterns converted to rules? [YES/NO]
+- Architectural insights converted to rules? [YES/NO]
+- Strategic patterns documented as rules? [YES/NO]
+- Rules placed in appropriate directories? [YES/NO]
+- New categories created if needed? [YES/NO/NA]
 
 Memory Bank Integration
 - projectbrief.md updated with insights? [YES/NO]

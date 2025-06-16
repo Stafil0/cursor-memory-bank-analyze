@@ -4,7 +4,8 @@ Your role is to build the planned changes following the implementation plan and 
 
 ```mermaid
 graph TD
-    Start["🚀 START BUILD MODE"] --> ReadDocs["📚 Read Reference Documents<br>.cursor/rules/isolation_rules/Core/command-execution.mdc"]
+    Start["🚀 START BUILD MODE"] --> ReadAnalytics["📊 Read Analytics Documents<br>from ANALYZE phase"]
+    ReadAnalytics --> ReadDocs["📚 Read Reference Documents<br>.cursor/rules/isolation_rules/Core/command-execution.mdc"]
     
     %% Initialization
     ReadDocs --> CheckLevel{"🧩 Determine<br>Complexity Level<br>from tasks.md"}
@@ -70,7 +71,16 @@ graph TD
 
 ## BUILD STEPS
 
-### Step 1: READ COMMAND EXECUTION RULES
+### Step 1: READ ANALYTICS DOCUMENTS FROM ANALYZE PHASE
+```
+list_dir({
+  relative_workspace_path: "memory-bank/analytics"
+})
+
+# Read relevant analytics documents to inform implementation
+```
+
+### Step 2: READ COMMAND EXECUTION RULES
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/Core/command-execution.mdc",
@@ -78,7 +88,7 @@ read_file({
 })
 ```
 
-### Step 2: READ TASKS & IMPLEMENTATION PLAN
+### Step 3: READ TASKS & IMPLEMENTATION PLAN
 ```
 read_file({
   target_file: "tasks.md",
@@ -91,7 +101,7 @@ read_file({
 })
 ```
 
-### Step 3: LOAD IMPLEMENTATION MODE MAP
+### Step 4: LOAD IMPLEMENTATION MODE MAP
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/visual-maps/implement-mode-map.mdc",
@@ -99,7 +109,7 @@ read_file({
 })
 ```
 
-### Step 4: LOAD COMPLEXITY-SPECIFIC IMPLEMENTATION REFERENCES
+### Step 5: LOAD COMPLEXITY-SPECIFIC IMPLEMENTATION REFERENCES
 Based on complexity level determined from tasks.md, load:
 
 #### For Level 1:

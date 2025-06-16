@@ -12,14 +12,16 @@ alwaysApply: false
 ```mermaid
 graph LR
     Init["1. INITIALIZATION"] --> Doc["2. DOCUMENTATION<br>SETUP"]
-    Doc --> Plan["3. TASK<br>PLANNING"]
-    Plan --> Impl["4. IMPLEMENTATION"]
-    Impl --> Reflect["5. REFLECTION"]
-    Reflect --> Archive["6. ARCHIVING"]
+    Doc --> Analyze["3. ANALYZE<br>PROBLEM ANALYSIS"]
+    Analyze --> Plan["4. TASK<br>PLANNING"]
+    Plan --> Impl["5. IMPLEMENTATION"]
+    Impl --> Reflect["6. REFLECTION"]
+    Reflect --> Archive["7. ARCHIVING"]
     
     %% Document connections for each phase
     Init -.-> InitDocs["INITIALIZATION"]
     Doc -.-> DocDocs["DOCUMENTATION"]
+    Analyze -.-> AnalyzeDocs["PROBLEM ANALYSIS"]
     Plan -.-> PlanDocs["PLANNING"]
     Impl -.-> ImplDocs["IMPLEMENTATION"]
     Reflect -.-> ReflectDocs["REFLECTION"]
@@ -89,7 +91,41 @@ graph TD
 → If any NO: Complete documentation setup
 ```
 
-### Phase 3: TASK PLANNING
+### Phase 3: ANALYZE (PROBLEM ANALYSIS)
+
+```mermaid
+graph TD
+    Start["Begin Problem<br>Analysis"] --> LoadAnalyze["Load ANALYZE<br>Mode Rules"]
+    LoadAnalyze --> DetectType["Detect Document<br>Type (Requirements/Bugs)"]
+    DetectType --> LoadTemplate["Load Appropriate<br>Analysis Template"]
+    LoadTemplate --> Analyze["Conduct Problem<br>Analysis"]
+    Analyze --> Document["Document Analysis<br>in Analytics Folder"]
+    Document --> AnalyzeComplete["Analysis<br>Complete"]
+```
+
+**Steps:**
+1. Load ANALYZE mode rules and templates
+2. Detect document type based on task characteristics
+3. Load appropriate analysis template (requirements or bugs primarily)
+4. Conduct focused problem analysis using template
+5. Document analysis results in memory-bank/analytics/ folder
+6. Prepare analysis for planning phase consumption
+
+**Milestone Checkpoint:**
+```
+✓ ANALYZE CHECKPOINT
+- ANALYZE mode rules loaded? [YES/NO]
+- Document type detected correctly? [YES/NO]
+- Appropriate template loaded? [YES/NO]
+- Problem analysis conducted? [YES/NO]
+- Analysis documented in analytics folder? [YES/NO]
+- Analysis ready for planning consumption? [YES/NO]
+
+→ If all YES: Proceed to Task Planning
+→ If any NO: Complete analysis steps
+```
+
+### Phase 4: TASK PLANNING
 
 ```mermaid
 graph TD
@@ -101,16 +137,18 @@ graph TD
 ```
 
 **Steps:**
-1. Define clear requirements
-2. Break down into subtasks
-3. Update tasks.md with subtasks
-4. Create time estimates
-5. Document dependencies and constraints
+1. Review analysis documents from ANALYZE phase
+2. Define clear requirements based on analysis
+3. Break down into subtasks
+4. Update tasks.md with subtasks
+5. Create time estimates
+6. Document dependencies and constraints
 
 **Milestone Checkpoint:**
 ```
 ✓ PLANNING CHECKPOINT
-- Requirements clearly defined? [YES/NO]
+- Analysis documents reviewed? [YES/NO]
+- Requirements clearly defined based on analysis? [YES/NO]
 - Task broken down into subtasks? [YES/NO]
 - tasks.md updated with subtasks? [YES/NO]
 - Time estimates created? [YES/NO]
@@ -120,7 +158,7 @@ graph TD
 → If any NO: Complete planning steps
 ```
 
-### Phase 4: IMPLEMENTATION
+### Phase 5: IMPLEMENTATION
 
 ```mermaid
 graph TD
@@ -153,7 +191,7 @@ graph TD
 → If any NO: Complete implementation steps
 ```
 
-### Phase 5: REFLECTION
+### Phase 6: REFLECTION
 
 ```mermaid
 graph TD
@@ -170,7 +208,8 @@ graph TD
 2. Review completed enhancement
 3. Document successes and challenges
 4. Extract key insights
-5. Define action items for future work
+5. Extract actionable rules (.mdc files)
+6. Define action items for future work
 
 **Milestone Checkpoint:**
 ```
@@ -179,13 +218,14 @@ graph TD
 - Enhancement reviewed? [YES/NO]
 - Successes and challenges documented? [YES/NO]
 - Key insights extracted? [YES/NO]
+- Actionable rules extracted to .mdc files? [YES/NO]
 - Action items defined? [YES/NO]
 
 → If all YES: Proceed to Archiving
 → If any NO: Complete reflection steps
 ```
 
-### Phase 6: ARCHIVING
+### Phase 7: ARCHIVING
 
 ```mermaid
 graph TD
@@ -285,5 +325,12 @@ Remember:
 │ Follow the structure but avoid unnecessary overhead. │
 └─────────────────────────────────────────────────────┘
 ```
+
+
+
+
+
+
+
 
 This ensures that simple enhancements are implemented with the right level of documentation and process. 

@@ -12,15 +12,17 @@ alwaysApply: false
 ```mermaid
 graph LR
     Init["1. INITIALIZATION"] --> Doc["2. DOCUMENTATION<br>SETUP"]
-    Doc --> Plan["3. ARCHITECTURAL<br>PLANNING"]
-    Plan --> Create["4. CREATIVE<br>PHASES"]
-    Create --> Impl["5. PHASED<br>IMPLEMENTATION"]
-    Impl --> Reflect["6. REFLECTION"]
-    Reflect --> Archive["7. ARCHIVING"]
+    Doc --> Analyze["3. ANALYZE<br>PROBLEM ANALYSIS"]
+    Analyze --> Plan["4. ARCHITECTURAL<br>PLANNING"]
+    Plan --> Create["5. CREATIVE<br>PHASES"]
+    Create --> Impl["6. PHASED<br>IMPLEMENTATION"]
+    Impl --> Reflect["7. REFLECTION"]
+    Reflect --> Archive["8. ARCHIVING"]
     
     %% Document connections for each phase
     Init -.-> InitDocs["INITIALIZATION"]
     Doc -.-> DocDocs["DOCUMENTATION"]
+    Analyze -.-> AnalyzeDocs["ENTERPRISE ANALYSIS"]
     Plan -.-> PlanDocs["ARCHITECTURAL PLANNING"]
     Create -.-> CreateDocs["CREATIVE PHASES"]
     Impl -.-> ImplDocs["PHASED IMPLEMENTATION"]
@@ -128,7 +130,48 @@ graph TD
 → If any NO: Complete documentation setup
 ```
 
-### Phase 3: ARCHITECTURAL PLANNING
+### Phase 3: ANALYZE (ENTERPRISE PROBLEM ANALYSIS)
+
+```mermaid
+graph TD
+    StartAnalyze["Begin L4 Enterprise<br>Analysis"] --> LoadAnalyze["Load ANALYZE Mode<br>Rules & All Templates"]
+    LoadAnalyze --> MultiType["Identify Multiple<br>Document Types Needed"]
+    MultiType --> LoadTemplates["Load All Relevant<br>Analysis Templates"]
+    LoadTemplates --> ConductAnalysis["Conduct Enterprise-Level<br>Analysis (All 4 Phases)"]
+    ConductAnalysis --> DocumentAnalysis["Document Comprehensive<br>Analysis Package"]
+    DocumentAnalysis --> ReviewAnalysis["Review Analysis<br>for Completeness"]
+    ReviewAnalysis --> AnalyzeComplete["L4 Analysis<br>Complete"]
+```
+
+**Steps:**
+1. Load ANALYZE mode rules and all available templates
+2. Identify multiple document types needed for enterprise analysis (requirements, research, bugs, brainstorming)
+3. Load all relevant analysis templates - Level 4 typically requires multiple analysis types
+4. Conduct comprehensive enterprise-level analysis using full 4-phase ANALYZE workflow:
+   - DISCOVER: Extensive information gathering across all domains
+   - ANALYZE: Deep analysis of requirements, constraints, and system interactions
+   - SYNTHESIZE: Integration of insights across multiple analysis dimensions
+   - DOCUMENT: Creation of comprehensive analysis package
+5. Document analysis results in `memory-bank/analytics/` folder with comprehensive naming
+6. Review analysis package for completeness and enterprise readiness
+7. Prepare comprehensive analysis foundation for architectural planning
+
+**Milestone Checkpoint:**
+```
+✓ L4 ANALYZE CHECKPOINT
+- ANALYZE mode rules and all templates loaded? [YES/NO]
+- Multiple document types identified for enterprise scope? [YES/NO]
+- All relevant templates loaded and utilized? [YES/NO]
+- Comprehensive enterprise analysis conducted across all domains? [YES/NO]
+- Analysis package documented with enterprise-level detail? [YES/NO]
+- Analysis reviewed for completeness and quality? [YES/NO]
+- Analysis provides comprehensive foundation for architectural planning? [YES/NO]
+
+→ If all YES: Proceed to Architectural Planning.
+→ If any NO: Complete analysis steps.
+```
+
+### Phase 4: ARCHITECTURAL PLANNING
 
 ```mermaid
 graph TD
@@ -145,21 +188,23 @@ graph TD
 ```
 
 **Steps:**
-1. Analyze comprehensive requirements with traceability
-2. Document complete business context and constraints
-3. Define clear vision and goals with measurable objectives
-4. Establish architectural principles and non-functional requirements
-5. Explore multiple architectural alternatives with thorough analysis
-6. Perform detailed evaluation using weighted criteria
-7. Make architecture selection with comprehensive justification
-8. Create complete architecture documentation with diagrams
-9. Conduct formal architecture review with stakeholders
+1. Review comprehensive analysis package from ANALYZE phase
+2. Analyze comprehensive requirements with traceability based on analysis
+3. Document complete business context and constraints from analysis
+4. Define clear vision and goals with measurable objectives
+5. Establish architectural principles and non-functional requirements
+6. Explore multiple architectural alternatives with thorough analysis
+7. Perform detailed evaluation using weighted criteria
+8. Make architecture selection with comprehensive justification
+9. Create complete architecture documentation with diagrams
+10. Conduct formal architecture review with stakeholders
 
 **Milestone Checkpoint:**
 ```
 ✓ ARCHITECTURAL PLANNING CHECKPOINT
-- Requirements comprehensively analyzed? [YES/NO]
-- Business context fully documented? [YES/NO]
+- Analysis package from ANALYZE phase reviewed? [YES/NO]
+- Requirements comprehensively analyzed based on analysis? [YES/NO]
+- Business context fully documented from analysis? [YES/NO]
 - Vision and goals clearly defined? [YES/NO]
 - Architectural principles established? [YES/NO]
 - Alternatives thoroughly explored? [YES/NO]
@@ -172,7 +217,7 @@ graph TD
 → If any NO: Complete architectural planning
 ```
 
-### Phase 4: CREATIVE PHASES
+### Phase 5: CREATIVE PHASES
 
 ```mermaid
 graph TD
@@ -219,7 +264,7 @@ graph TD
 → If any NO: Complete creative phases
 ```
 
-### Phase 5: PHASED IMPLEMENTATION
+### Phase 6: PHASED IMPLEMENTATION
 
 ```mermaid
 graph TD
@@ -265,7 +310,7 @@ graph TD
 → If any NO: Complete implementation steps
 ```
 
-### Phase 6: REFLECTION
+### Phase 7: REFLECTION
 
 ```mermaid
 graph TD
@@ -289,9 +334,10 @@ graph TD
 5. Document challenges with implemented solutions and lessons
 6. Extract strategic technical insights for enterprise knowledge
 7. Extract process improvement insights for future projects
-8. Document business impact and value delivered
-9. Define strategic action items with prioritization
-10. Create comprehensive reflection documentation
+8. Extract actionable rules from system-level insights and create .mdc files
+9. Document business impact and value delivered
+10. Define strategic action items with prioritization
+11. Create comprehensive reflection documentation
 
 **Milestone Checkpoint:**
 ```
@@ -303,6 +349,7 @@ graph TD
 - Challenges documented with solutions? [YES/NO]
 - Strategic technical insights extracted? [YES/NO]
 - Process improvement insights extracted? [YES/NO]
+- Actionable rules extracted to .mdc files? [YES/NO]
 - Business impact documented? [YES/NO]
 - Strategic action items defined? [YES/NO]
 - Comprehensive reflection documentation created? [YES/NO]
@@ -311,7 +358,7 @@ graph TD
 → If any NO: Complete reflection steps
 ```
 
-### Phase 7: ARCHIVING
+### Phase 8: ARCHIVING
 
 ```mermaid
 graph TD
@@ -420,5 +467,13 @@ Remember:
 │ phase. NO EXCEPTIONS.                               │
 └─────────────────────────────────────────────────────┘
 ```
+
+
+
+
+
+
+
+
 
 This ensures that complex systems are designed, implemented, and documented to the highest standards, with enterprise-grade quality and governance. 

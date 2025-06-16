@@ -2,6 +2,98 @@
 
 > **Personal Note**: Memory Bank is my personal hobby project that I develop for my own use in coding projects. As this is a personal project, I don't maintain an issues tracker or actively collect feedback. However, if you're using these rules and encounter issues, one of the great advantages is that you can ask the Cursor AI directly to modify or update the rules to better suit your specific workflow. The system is designed to be adaptable by the AI, allowing you to customize it for your own needs without requiring external support.
 
+## Version 0.7.1-analyze-beta - ANALYZE Mode Integration
+
+> This release introduces comprehensive ANALYZE mode integration, transforming Memory Bank from a 4-mode to a 5-mode workflow system with enhanced research and analysis capabilities.
+
+### 🌟 Major Features
+
+#### ANALYZE Mode Integration _(New)_
+- **Comprehensive Research Phase**: Dedicated mode for requirements analysis, research, and documentation
+- **4-Phase ANALYZE Workflow**: DISCOVER → ANALYZE → SYNTHESIZE → DOCUMENT
+- **Analytics Document System**: Structured storage in `memory-bank/analytics/` with specialized folders:
+  - `requirements/` - Requirements analysis documents
+  - `research/` - Research and competitive analysis
+  - `bugs/` - Bug investigation and analysis
+  - `brainstorming/` - Creative exploration and ideation
+- **Template-Based Analysis**: Specialized templates for different analysis types
+
+#### Enhanced Workflow Architecture _(Enhanced)_
+- **5-Mode Workflow**: VAN → ANALYZE → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE
+- **Level-Based Integration**: 
+  - Level 1: VAN → IMPLEMENT → REFLECT (quick bug fixes)
+  - Level 2-4: Full workflow with ANALYZE phase
+- **Cross-Mode Analytics Consumption**: All subsequent modes now consume analytics documents
+
+#### Agent Instructions Alignment _(Fixed)_
+- **Complete Workflow Integration**: All agent instructions now properly reference ANALYZE mode
+- **Analytics Document Flow**: Each mode consumes relevant analytics documents as primary input
+- **Consistent Mode Transitions**: VAN mode correctly routes Level 2-4 tasks to ANALYZE instead of PLAN
+- **Reflection Enhancement**: REFLECT mode now includes analytics effectiveness review
+
+### 🔄 Process Improvements
+
+#### ANALYZE Mode Capabilities
+- **Requirements Analysis**: Structured approach to documenting and analyzing requirements
+- **Research & Competitive Analysis**: Comprehensive research methodologies with documentation
+- **Bug Investigation**: Systematic bug analysis with root cause identification
+- **Brainstorming & Ideation**: Creative exploration with structured documentation
+- **Document Type Detection**: Automatic detection and appropriate template selection
+
+#### Enhanced Mode Integration
+- **Analytics-Informed Planning**: PLAN mode now starts with analytics document review
+- **Research-Driven Creativity**: CREATIVE mode incorporates research findings
+- **Analysis-Based Implementation**: IMPLEMENT mode considers analytical insights
+- **Comprehensive Reflection**: REFLECT mode evaluates analytics effectiveness
+
+#### QA Integration Improvements
+- **ANALYZE Phase Detection**: QA mode now properly detects and validates ANALYZE phase
+- **Analytics Validation**: Comprehensive validation of analytics folder structure and documents
+- **Workflow Validation**: Complete validation coverage for all 5-mode workflows
+
+### 📚 Documentation Enhancements
+- **Analytics Templates**: Specialized templates for each analysis type
+- **Progressive Documentation**: Analytics documents inform all subsequent phases
+- **Cross-Reference System**: Clear linkage between analytics and implementation decisions
+- **Effectiveness Tracking**: Built-in mechanisms to evaluate analysis quality
+
+### 🛠 Technical Improvements
+- **Agent Instruction Consistency**: All custom mode instructions aligned with 5-mode architecture
+- **Workflow Routing Logic**: Proper mode transitions based on complexity levels
+- **Analytics Document Management**: Structured storage and retrieval system
+- **Integration Testing**: Comprehensive validation of all integration points
+
+### 🐛 Critical Fixes
+- **Workflow Misalignment**: Resolved contradiction between agent instructions and rules system
+- **Mode Transition Logic**: Fixed VAN mode incorrectly routing Level 2-4 tasks to PLAN instead of ANALYZE
+- **Analytics Isolation**: Eliminated ANALYZE mode operating in isolation
+- **Planning Input**: Fixed PLAN mode ignoring analysis outputs
+
+### 📋 Breaking Changes
+- **Workflow Structure**: Level 2-4 tasks now require ANALYZE phase (VAN → ANALYZE → PLAN instead of VAN → PLAN)
+- **Mode Count**: System now requires 7 custom modes instead of 6 (added ANALYZE mode)
+- **Analytics Dependencies**: All modes now expect analytics documents as input for Level 2-4 tasks
+
+### 🔧 Migration Guide
+1. **Add ANALYZE Mode**: Create new custom mode with `custom_modes/analyze_instructions.md`
+2. **Update Existing Modes**: Replace all existing mode instructions with updated versions
+3. **Workflow Adjustment**: Expect ANALYZE phase for Level 2-4 tasks
+4. **Analytics Folder**: System will automatically create `memory-bank/analytics/` structure
+
+### 📈 Integration Test Results
+- **QA Mode Integration**: 8/8 PASS (100%) - Complete ANALYZE phase validation
+- **Workflow Loading**: 8/8 PASS (100%) - Proper complexity-based transitions  
+- **Agent Instructions**: 6/6 PASS (100%) - Full alignment with 5-mode architecture
+
+### 🔜 Next Steps
+- Enhanced analytics template customization
+- Cross-task analytics knowledge preservation
+- Advanced research methodology integration
+- Analytics effectiveness metrics
+
+---
+Released on: June 16, 2025
+
 ## Version 0.7-beta - Token-Optimized Workflows
 
 > Building upon the architectural foundations established in v0.6-beta.1, this release introduces significant token efficiency optimizations and enhanced workflow capabilities with substantial improvements in context management.

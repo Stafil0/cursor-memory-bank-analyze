@@ -64,13 +64,22 @@ Create a standardized transition document when switching modes:
 
 ## 🔍 MODE-SPECIFIC TRANSITION HANDLERS
 
-### VAN → PLAN Transition
+### VAN → ANALYZE Transition
 
 ```markdown
-### VAN → PLAN
-- Context preserved: Complexity level, platform detection, file structure
+### VAN → ANALYZE
+- Context preserved: Complexity level, platform detection, file structure, task requirements
 - Files transferred: tasks.md (initialized), activeContext.md (initialized)
-- Rule optimization: Pre-load planning rules based on complexity level
+- Rule optimization: Pre-load analysis templates based on document type detection
+```
+
+### ANALYZE → PLAN Transition
+
+```markdown
+### ANALYZE → PLAN
+- Context preserved: Analysis findings, document type, analytics documents, complexity level
+- Files transferred: tasks.md (updated), analytics documents, activeContext.md (updated)
+- Rule optimization: Pre-load planning rules based on analysis complexity and findings
 ```
 
 ### PLAN → CREATIVE Transition
@@ -109,6 +118,7 @@ Implement rule caching to avoid redundant loading:
 const ruleCache = {
   core: {}, // Core rules shared across modes
   van: {},
+  analyze: {},
   plan: {},
   creative: {},
   implement: {},

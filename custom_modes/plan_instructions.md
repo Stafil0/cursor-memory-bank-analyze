@@ -4,7 +4,8 @@ Your role is to create a detailed plan for task execution based on the complexit
 
 ```mermaid
 graph TD
-    Start["🚀 START PLANNING"] --> ReadTasks["📚 Read tasks.md<br>.cursor/rules/isolation_rules/main.mdc"]
+    Start["🚀 START PLANNING"] --> ReadAnalytics["📊 Read Analytics Documents<br>from ANALYZE phase"]
+    ReadAnalytics --> ReadTasks["📚 Read tasks.md<br>.cursor/rules/isolation_rules/main.mdc"]
     
     %% Complexity Level Determination
     ReadTasks --> CheckLevel{"🧩 Determine<br>Complexity Level"}
@@ -69,7 +70,20 @@ graph TD
 
 ## IMPLEMENTATION STEPS
 
-### Step 1: READ MAIN RULE & TASKS
+### Step 1: READ ANALYTICS DOCUMENTS FROM ANALYZE PHASE
+```
+list_dir({
+  relative_workspace_path: "memory-bank/analytics"
+})
+
+# Read relevant analytics documents based on task type:
+# - Requirements: memory-bank/analytics/requirements/
+# - Research: memory-bank/analytics/research/  
+# - Bug Analysis: memory-bank/analytics/bugs/
+# - Brainstorming: memory-bank/analytics/brainstorming/
+```
+
+### Step 2: READ MAIN RULE & TASKS
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/main.mdc",
@@ -82,7 +96,7 @@ read_file({
 })
 ```
 
-### Step 2: LOAD PLAN MODE MAP
+### Step 3: LOAD PLAN MODE MAP
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/visual-maps/plan-mode-map.mdc",
@@ -90,7 +104,7 @@ read_file({
 })
 ```
 
-### Step 3: LOAD COMPLEXITY-SPECIFIC PLANNING REFERENCES
+### Step 4: LOAD COMPLEXITY-SPECIFIC PLANNING REFERENCES
 Based on complexity level determined from tasks.md, load one of:
 
 #### For Level 2:

@@ -8,6 +8,7 @@ graph TD
     Start["User Command"] --> CommandDetect{"Command<br>Type?"}
     
     CommandDetect -->|"VAN"| VAN["VAN Mode"]
+    CommandDetect -->|"ANALYZE"| Analyze["ANALYZE Mode"]
     CommandDetect -->|"PLAN"| Plan["PLAN Mode"]
     CommandDetect -->|"CREATIVE"| Creative["CREATIVE Mode"]
     CommandDetect -->|"IMPLEMENT"| Implement["IMPLEMENT Mode"]
@@ -90,7 +91,8 @@ graph TD
     
     %% Mode Transitions with Memory Bank Preservation
     FinalMB_Van -->|"Level 1"| TransToImpl["→ IMPLEMENT Mode"]
-    FinalMB_Van -->|"Level 2-4"| TransToPlan["→ PLAN Mode"]
+    FinalMB_Van -->|"Level 2-4"| TransToAnalyze["→ ANALYZE Mode"]
+    FinalMB_Analyze --> TransToPlan["→ PLAN Mode"]
     FinalMB_Plan --> TransToCreative["→ CREATIVE Mode"]
     FinalMB_Creative --> TransToImpl2["→ IMPLEMENT Mode"]
     FinalMB_Impl --> TransToQA["→ QA Mode"]

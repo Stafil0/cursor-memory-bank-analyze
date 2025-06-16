@@ -15,7 +15,8 @@ graph TD
     LoadReflectMap --> AssessLevelReflect{"🧩 Determine Complexity Level"}
     AssessLevelReflect --> LoadLevelReflectRules["📚 Load Level-Specific<br>Reflection Rules"]
     LoadLevelReflectRules --> ReflectProcess["🤔 EXECUTE REFLECTION PROCESS"]
-    ReflectProcess --> ReviewImpl["🔍 Review Implementation<br>& Compare to Plan"]
+    ReflectProcess --> ReviewAnalytics["📊 Review Analytics Documents<br>& Their Effectiveness"]
+    ReviewAnalytics --> ReviewImpl["🔍 Review Implementation<br>& Compare to Plan"]
     ReviewImpl --> DocSuccess["👍 Document Successes"]
     DocSuccess --> DocChallenges["👎 Document Challenges"]
     DocChallenges --> DocLessons["💡 Document Lessons Learned"]
@@ -62,7 +63,16 @@ graph TD
 ```
 
 ## IMPLEMENTATION STEPS
-### Step 1: READ MAIN RULE & CONTEXT FILES
+### Step 1: READ ANALYTICS DOCUMENTS FROM ANALYZE PHASE
+```
+list_dir({
+  relative_workspace_path: "memory-bank/analytics"
+})
+
+# Read analytics documents to review their effectiveness
+```
+
+### Step 2: READ MAIN RULE & CONTEXT FILES
 ```
 read_file({
   target_file: ".cursor/rules/isolation_rules/main.mdc",
@@ -80,7 +90,7 @@ read_file({
 })
 ```
 
-### Step 2: LOAD REFLECT+ARCHIVE MODE MAPS
+### Step 3: LOAD REFLECT+ARCHIVE MODE MAPS
 Load the visual maps for both reflection and archiving, as this mode handles both.
 ```
 read_file({
@@ -94,7 +104,7 @@ read_file({
 })
 ```
 
-### Step 3: LOAD COMPLEXITY-SPECIFIC RULES (Based on tasks.md)
+### Step 4: LOAD COMPLEXITY-SPECIFIC RULES (Based on tasks.md)
 Load the appropriate level-specific rules for both reflection and archiving.  
 Example for Level 2:
 ```
@@ -115,7 +125,8 @@ Goal: Facilitate a structured review, capture key insights in reflection.md, and
 
 ```mermaid
 graph TD
-    ReflectStart["🤔 START REFLECTION"] --> Review["🔍 Review Implementation<br>& Compare to Plan"]
+    ReflectStart["🤔 START REFLECTION"] --> ReviewAnalytics["📊 Review Analytics Documents<br>& Their Effectiveness"]
+    ReviewAnalytics --> Review["🔍 Review Implementation<br>& Compare to Plan"]
     Review --> Success["👍 Document Successes"]
     Success --> Challenges["👎 Document Challenges"]
     Challenges --> Lessons["💡 Document Lessons Learned"]
@@ -160,6 +171,7 @@ graph TD
 ## VERIFICATION CHECKLISTS
 ### Reflection Verification Checklist
 ✓ REFLECTION VERIFICATION
+- Analytics documents reviewed for effectiveness? [YES/NO]
 - Implementation thoroughly reviewed? [YES/NO]
 - Successes documented? [YES/NO]
 - Challenges documented? [YES/NO]

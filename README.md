@@ -1,4 +1,4 @@
-# Memory Bank System v0.7-beta
+# Memory Bank System v0.7.1-analyze-beta
 
 A token-optimized, hierarchical task management system that integrates with Cursor custom modes for efficient development workflows.
 
@@ -10,6 +10,7 @@ graph TD
     Main --> Token["Token Optimization"]
     
     Modes --> VAN["VAN: Initialization"]
+    Modes --> ANALYZE["ANALYZE: Research & Analysis"]
     Modes --> PLAN["PLAN: Task Planning"]
     Modes --> CREATIVE["CREATIVE: Design"]
     Modes --> IMPLEMENT["IMPLEMENT: Building"]
@@ -31,7 +32,7 @@ Memory Bank is a personal project that provides a structured approach to develop
 
 ### Token-Optimized Architecture
 
-Version 0.7-beta introduces significant token optimization improvements:
+Version 0.7.1-analyze-beta introduces significant token optimization improvements and comprehensive ANALYZE mode integration:
 
 - **Hierarchical Rule Loading**: Only loads essential rules initially with specialized lazy-loading
 - **Progressive Documentation**: Implements concise templates that scale with task complexity
@@ -45,7 +46,7 @@ See the [Memory Bank Optimizations](MEMORY_BANK_OPTIMIZATIONS.md) document for d
 While Cursor's documentation describes custom modes as primarily standalone configurations with basic prompts and tool selections, Memory Bank significantly extends this concept:
 
 - **Graph-Based Mode Integration**: Modes are interconnected nodes in a development workflow rather than isolated tools
-- **Workflow Progression**: Modes are designed to transition from one to another in a logical sequence (VAN → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
+- **Workflow Progression**: Modes are designed to transition from one to another in a logical sequence (VAN → ANALYZE → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
 - **Shared Memory**: Persistent state maintained across mode transitions via Memory Bank files
 - **Adaptive Behavior**: Each mode adjusts its recommendations based on project complexity
 - **Built-in QA Functions**: QA capabilities can be called from any mode for technical validation
@@ -100,7 +101,7 @@ Note: other documents are not necessary for memory bank operation, they are expl
 
 ### Step 2: Setting Up Custom Modes in Cursor
 
-**This is the most critical and challenging part of the setup.** You'll need to manually create six custom modes in Cursor and copy the instruction content from the provided files:
+**This is the most critical and challenging part of the setup.** You'll need to manually create seven custom modes in Cursor and copy the instruction content from the provided files:
 
 #### How to Add a Custom Mode in Cursor
 
@@ -128,28 +129,33 @@ For each mode, configure as follows (If MCPs are showing, you can keep them on, 
 
 <img src="assets/van_mode_1.png" height="300" style="display: inline-block;"/> <img src="assets/van_mode_2.png" height="300" style="display: inline-block;"/>
 
-2. **PLAN MODE** (Task Planning)
+2. **ANALYZE MODE** (Research & Analysis)
+   - **Name**: 📊 ANALYZE
+   - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory", "Edit File"
+   - **Advanced options**: Paste from `custom_modes/analyze_instructions.md`
+
+3. **PLAN MODE** (Task Planning)
    - **Name**: 📋 PLAN
    - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory"
    - **Advanced options**: Paste from `custom_modes/plan_instructions.md`
 
 <img src="assets/plan_mode_1.png" height="300"/> <img src="assets/plan_mode_2.png" height="300" style="display: inline-block;"/>
 
-3. **CREATIVE MODE** (Design Decisions)
+4. **CREATIVE MODE** (Design Decisions)
    - **Name**: 🎨 CREATIVE
    - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory", "Edit File"
    - **Advanced options**: Paste from `custom_modes/creative_instructions.md`
 
 <img src="assets/creative_mode_1.png" height="300"/> <img src="assets/creative_mode_2.png" height="300" style="display: inline-block;"/>
 
-4. **IMPLEMENT MODE** (Code Implementation)
+5. **IMPLEMENT MODE** (Code Implementation)
    - **Name**: ⚒️ IMPLEMENT
    - **Tools**: Enable all tools
    - **Advanced options**: Paste from `custom_modes/implement_instructions.md`
 
 <img src="assets/implement_mode_1.png" height="300"/> <img src="assets/implement_mode_2.png" height="300" style="display: inline-block;"/>
 
-5. **REFLECT & ARHIVE MODE** (Review)
+6. **REFLECT & ARCHIVE MODE** (Review)
    - **Name**: 🔍 REFLECT or ARCHIVE
    - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory"
    - **Advanced options**: Paste from `custom_modes/reflect_archive_instructions.md`
@@ -173,9 +179,8 @@ QA is not a separate custom mode but rather a set of validation functions that c
    - VAN will analyze your project structure and determine complexity
 
 2. **Follow the Workflow Based on Complexity**:
-   - **Level 1 tasks**: May proceed directly to IMPLEMENT after VAN
-   - **Level 2 tasks**: Simplified workflow (VAN → PLAN → IMPLEMENT → REFLECT)
-   - **Level 3-4 tasks**: Full workflow (VAN → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
+   - **Level 1 tasks**: Quick bug fixes (VAN → IMPLEMENT → REFLECT)
+   - **Level 2-4 tasks**: Full workflow with analysis (VAN → ANALYZE → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
    - **At any point**: Type "QA" to perform technical validation
 
 
@@ -184,7 +189,8 @@ QA is not a separate custom mode but rather a set of validation functions that c
 3. **Mode-Specific Commands**:
    ```
    VAN - Initialize project and determine complexity
-   PLAN - Create detailed implementation plan
+   ANALYZE - Research, analyze requirements, and document findings
+   PLAN - Create detailed implementation plan based on analysis
    CREATIVE - Explore design options for complex components
    IMPLEMENT - Systematically build planned components
    REFLECT - Review and document lessons learned
@@ -241,7 +247,7 @@ graph LR
 
 ## Version Information
 
-This is version v0.7-beta of the Memory Bank system. It introduces significant token optimization improvements over v0.6-beta while maintaining all functionality. See the [Release Notes](RELEASE_NOTES.md) for detailed information about the changes.
+This is version v0.7.1-analyze-beta of the Memory Bank system. It introduces significant token optimization improvements over v0.6-beta while maintaining all functionality. See the [Release Notes](RELEASE_NOTES.md) for detailed information about the changes.
 
 ### Ongoing Development
 
@@ -263,4 +269,4 @@ The Memory Bank system is actively being developed and improved. Key points to u
 
 ---
 
-*Note: This README is for v0.7-beta and subject to change as the system evolves.*
+*Note: This README is for v0.7.1-analyze-beta and subject to change as the system evolves.*

@@ -16,7 +16,8 @@ NO process can continue without verifying Memory Bank existence
 ```mermaid
 graph TD
     subgraph Modes["Cursor Custom Modes"]
-        VAN["VAN MODE<br>Initialization"] --> PLAN["PLAN MODE<br>Task Planning"]
+        VAN["VAN MODE<br>Initialization"] --> ANALYZE["ANALYZE MODE<br>Problem Analysis"]
+        ANALYZE --> PLAN["PLAN MODE<br>Task Planning"]
         PLAN --> Creative["CREATIVE MODE<br>Design Decisions"]
         Creative --> Implement["IMPLEMENT MODE<br>Code Implementation"]
         Implement --> Reflect["REFLECT MODE<br>Task Review"]
@@ -24,6 +25,7 @@ graph TD
     end
     
     VAN -.->|"Loads"| VANRules["• main.md<br>• platform-awareness.md<br>• file-verification.md<br>• workflow-init.md"]
+    ANALYZE -.->|"Loads"| ANALYZERules["• main.md<br>• analyze-mode-map.md<br>• analyze-template-*.md"]
     PLAN -.->|"Loads"| PLANRules["• main.md<br>• task-tracking.md<br>• planning-process.md"]
     Creative -.->|"Loads"| CreativeRules["• main.md<br>• creative-phase.md<br>• design-patterns.md"]
     Implement -.->|"Loads"| ImplementRules["• main.md<br>• command-execution.md<br>• implementation-guide.md"]
@@ -81,15 +83,23 @@ graph TD
     subgraph "Memory Bank Files"
         tasks["tasks.md<br>Source of Truth"]
         active["activeContext.md<br>Current Focus"]
+        analytics["analytics/*<br>Analysis Documents"]
         creative["creative-*.md<br>Design Decisions"]
         progress["progress.md<br>Implementation Status"]
     end
     
     VAN["VAN MODE"] -->|"Creates/Updates"| tasks
     VAN -->|"Creates/Updates"| active
+    VAN -->|"Creates"| analytics
+    
+    ANALYZE["ANALYZE MODE"] -->|"Reads"| tasks
+    ANALYZE -->|"Reads"| active
+    ANALYZE -->|"Creates"| analytics
+    ANALYZE -->|"Updates"| tasks
     
     PLAN["PLAN MODE"] -->|"Reads"| tasks
     PLAN -->|"Reads"| active
+    PLAN -->|"Reads"| analytics
     PLAN -->|"Updates"| tasks
     
     Creative["CREATIVE MODE"] -->|"Reads"| tasks
@@ -108,6 +118,7 @@ graph TD
     Archive["ARCHIVE MODE"] -->|"Reads"| tasks
     Archive -->|"Reads"| progress
     Archive -->|"Archives"| creative
+    Archive -->|"Archives"| analytics
 ```
 
 ## 📋 MODE TRANSITION PROTOCOL
@@ -152,5 +163,8 @@ mkdir -p project/{src,tests,docs} && cd project
 grep "TODO" $(find . -name "*.js")
 npm install && npm start
 ```
+
+
+
 
 Refer to [command-execution.mdc](mdc:.cursor/rules/isolation_rules/Core/command-execution.mdc) for detailed guidance. 
