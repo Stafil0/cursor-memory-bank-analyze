@@ -1,4 +1,4 @@
-# Memory Bank System v0.7.1-analyze-beta
+# Memory Bank System v0.7.2-analyze-beta
 
 A token-optimized, hierarchical task management system that integrates with Cursor custom modes for efficient development workflows.
 
@@ -32,7 +32,7 @@ Memory Bank is a personal project that provides a structured approach to develop
 
 ### Token-Optimized Architecture
 
-Version 0.7.1-analyze-beta introduces significant token optimization improvements and comprehensive ANALYZE mode integration:
+Version 0.7.2-analyze-beta introduces enhanced workflow flexibility and comprehensive ANALYZE mode integration:
 
 - **Hierarchical Rule Loading**: Only loads essential rules initially with specialized lazy-loading
 - **Progressive Documentation**: Implements concise templates that scale with task complexity
@@ -46,9 +46,9 @@ See the [Memory Bank Optimizations](MEMORY_BANK_OPTIMIZATIONS.md) document for d
 While Cursor's documentation describes custom modes as primarily standalone configurations with basic prompts and tool selections, Memory Bank significantly extends this concept:
 
 - **Graph-Based Mode Integration**: Modes are interconnected nodes in a development workflow rather than isolated tools
-- **Workflow Progression**: Modes are designed to transition from one to another in a logical sequence (VAN → ANALYZE → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
+- **Flexible Workflow Progression**: Supports both full workflow (VAN → ANALYZE → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE) and simplified paths (VAN → PLAN → IMPLEMENT → REFLECT) based on task complexity
 - **Shared Memory**: Persistent state maintained across mode transitions via Memory Bank files
-- **Adaptive Behavior**: Each mode adjusts its recommendations based on project complexity
+- **Adaptive Behavior**: Each mode adjusts its recommendations based on project complexity and can skip unnecessary phases
 - **Built-in QA Functions**: QA capabilities can be called from any mode for technical validation
 
 This approach transforms custom modes from simple AI personalities into components of a coordinated development system with specialized phases working together.
@@ -101,7 +101,7 @@ Note: other documents are not necessary for memory bank operation, they are expl
 
 ### Step 2: Setting Up Custom Modes in Cursor
 
-**This is the most critical and challenging part of the setup.** You'll need to manually create seven custom modes in Cursor and copy the instruction content from the provided files:
+**This is the most critical and challenging part of the setup.** You'll need to manually create six custom modes in Cursor and copy the instruction content from the provided files:
 
 #### How to Add a Custom Mode in Cursor
 
@@ -129,33 +129,28 @@ For each mode, configure as follows (If MCPs are showing, you can keep them on, 
 
 <img src="assets/van_mode_1.png" height="300" style="display: inline-block;"/> <img src="assets/van_mode_2.png" height="300" style="display: inline-block;"/>
 
-2. **ANALYZE MODE** (Research & Analysis)
-   - **Name**: 📊 ANALYZE
+2. **ANALYZE+PLAN MODE** (Research, Analysis & Task Planning)
+   - **Name**: 📊 ANALYZE+PLAN
    - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory", "Edit File"
-   - **Advanced options**: Paste from `custom_modes/analyze_instructions.md`
-
-3. **PLAN MODE** (Task Planning)
-   - **Name**: 📋 PLAN
-   - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory"
-   - **Advanced options**: Paste from `custom_modes/plan_instructions.md`
+   - **Advanced options**: Paste from `custom_modes/analyze_plan_instructions.md`
 
 <img src="assets/plan_mode_1.png" height="300"/> <img src="assets/plan_mode_2.png" height="300" style="display: inline-block;"/>
 
-4. **CREATIVE MODE** (Design Decisions)
+3. **CREATIVE MODE** (Design Decisions)
    - **Name**: 🎨 CREATIVE
    - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory", "Edit File"
    - **Advanced options**: Paste from `custom_modes/creative_instructions.md`
 
 <img src="assets/creative_mode_1.png" height="300"/> <img src="assets/creative_mode_2.png" height="300" style="display: inline-block;"/>
 
-5. **IMPLEMENT MODE** (Code Implementation)
+4. **IMPLEMENT MODE** (Code Implementation)
    - **Name**: ⚒️ IMPLEMENT
    - **Tools**: Enable all tools
    - **Advanced options**: Paste from `custom_modes/implement_instructions.md`
 
 <img src="assets/implement_mode_1.png" height="300"/> <img src="assets/implement_mode_2.png" height="300" style="display: inline-block;"/>
 
-6. **REFLECT & ARCHIVE MODE** (Review)
+5. **REFLECT & ARCHIVE MODE** (Review)
    - **Name**: 🔍 REFLECT or ARCHIVE
    - **Tools**: Enable "Codebase Search", "Read File", "Terminal", "List Directory"
    - **Advanced options**: Paste from `custom_modes/reflect_archive_instructions.md`
@@ -180,7 +175,9 @@ QA is not a separate custom mode but rather a set of validation functions that c
 
 2. **Follow the Workflow Based on Complexity**:
    - **Level 1 tasks**: Quick bug fixes (VAN → IMPLEMENT → REFLECT)
-   - **Level 2-4 tasks**: Full workflow with analysis (VAN → ANALYZE → PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
+   - **Level 2 tasks**: Simple enhancements (VAN → ANALYZE+PLAN → IMPLEMENT → REFLECT)
+   - **Level 3-4 tasks**: Full workflow (VAN → ANALYZE+PLAN → CREATIVE → IMPLEMENT → REFLECT → ARCHIVE)
+   - **Flexible workflows**: ANALYZE+PLAN mode can skip analysis for simple tasks or provide full analysis for complex ones
    - **At any point**: Type "QA" to perform technical validation
 
 
@@ -189,8 +186,8 @@ QA is not a separate custom mode but rather a set of validation functions that c
 3. **Mode-Specific Commands**:
    ```
    VAN - Initialize project and determine complexity
-   ANALYZE - Research, analyze requirements, and document findings
-   PLAN - Create detailed implementation plan based on analysis
+   ANALYZE - Force analysis phase (research, analyze requirements, document findings)
+   PLAN - Skip to planning phase or proceed after analysis
    CREATIVE - Explore design options for complex components
    IMPLEMENT - Systematically build planned components
    REFLECT - Review and document lessons learned
